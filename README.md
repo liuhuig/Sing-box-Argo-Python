@@ -48,20 +48,15 @@
 
 | 环境变量 | 默认值 | 说明 |
 | :--- | :--- | :--- |
-| **`ARGO_DOMAIN`** | `""` | 固定隧道域名 |
-| **`ARGO_AUTH`** | `""` | 固定隧道 Token 或 JSON 密钥 |
+| **`FILE_PATH`** | `.cache` | 运行路径，sub.txt 保存目录 |
 | **`UUID`** | `5520fab5-56d4-48cb-8156-e58b1cc18442` | VMess 用户 UUID |
-| **`SUB_PATH`** | `sub` | 订阅接口 Token 路径 |
-| **`PORT`** | `3000` | Web 订阅与健康检查端口 |
+| **`ARGO_DOMAIN`** | `""` | 固定隧道域名 |
+| **`ARGO_AUTH`** | `""` | 固定隧道 Token |
+| **`ARGO_PORT`** | `8001` | Argo 隧道本地监听端口 |
 | **`CFIP`** | `saas.sin.fan` | 优选 IP 或优选域名 |
 | **`CFPORT`** | `443` | 优选端口 |
 | **`NAME`** | `""` | 节点显示名称 |
-| **`CHAT_ID`** | `""` | Telegram Chat ID（可选，推送到 TG） |
-| **`BOT_TOKEN`** | `""` | Telegram Bot Token（可选） |
-| **`UPLOAD_URL`** | `""` | 节点或订阅自动上传地址（可选） |
-| **`PROJECT_URL`** | `""` | 项目 URL（自动保活可选） |
-| **`AUTO_ACCESS`** | `false` | 是否开启自动 URL 保活任务 |
-| **`DISABLE_ARGO`** | `false` | 设置为 `true` 时禁用 Argo 隧道 |
+
 
 ---
 
