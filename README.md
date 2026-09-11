@@ -82,6 +82,7 @@ $env:GOOS="linux"; $env:GOARCH="amd64"; go build -ldflags="-s -w" -o main main.g
 GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" -o main main.go
 ```
 
+
 ---
 
 ## 📄 开源协议
