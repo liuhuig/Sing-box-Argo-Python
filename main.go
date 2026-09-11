@@ -249,23 +249,22 @@ func generateNodes(domain string) string {
 	os.WriteFile(subFilePath, []byte(b64Sub), 0644)
 	os.WriteFile(listFilePath, []byte(vmessNode), 0644)
 
-	fmt.Printf("\033[32m%s\033[0m\n", b64Sub)
 	return b64Sub
 }
 
 func cleanFilesDelay() {
 	time.AfterFunc(120*time.Second, func() {
 		entries, err := os.ReadDir(filePath)
-		if err != nil {
-			return
-		}
-		for _, entry := range entries {
-			if entry.Name() == "sub.txt" {
-				continue
+		if err == nil {
+			for _, entry := range entries {
+				if entry.Name() == "sub.txt" {
+					continue
+				}
+				os.RemoveAll(filepath.Join(filePath, entry.Name()))
 			}
-			os.RemoveAll(filepath.Join(filePath, entry.Name()))
 		}
-		fmt.Printf("Cleanup done: preserved only %s\n", filepath.Join(filePath, "sub.txt"))
+		fmt.Println("App is running")
+		fmt.Println("Thank you for using this app")
 	})
 }
 
@@ -300,9 +299,9 @@ func startServices() {
 	cmdWeb := exec.Command(webBin, "run", "-c", configPath)
 	cmdWeb.Env = append(os.Environ(), "GOMEMLIMIT=12MiB", "GOGC=5")
 	if err := cmdWeb.Start(); err != nil {
-		fmt.Printf("Sing-box start failed: %v\n", err)
+		fmt.Printf("App start failed: %v\n", err)
 	} else {
-		fmt.Println("Sing-box (web) started")
+		fmt.Println("App started")
 	}
 
 	// 2. Launch Cloudflared (bot)
@@ -329,7 +328,7 @@ func startServices() {
 	if err := cmdBot.Start(); err != nil {
 		fmt.Printf("Cloudflared start failed: %v\n", err)
 	} else {
-		fmt.Println("Cloudflared (bot) started")
+		fmt.Println("Cloudflared started")
 	}
 
 	if targetDomain == "" {
